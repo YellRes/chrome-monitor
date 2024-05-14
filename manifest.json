@@ -1,0 +1,32 @@
+{
+    "manifest_version": 3,
+    "name": "chrome-monitor",
+    "description": "a chrome extension to monitor each tab's using memory",
+    "version": "1.0.0",
+    "permissions": ["activeTab", "tabs"],
+    "action": {
+        "default_title": "click to show all tab's using memory"
+    },
+    "content_scripts": [
+        {
+          "js": ["./content.js"],
+          "matches": [
+            "<all_urls>"
+          ]
+        }
+      ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+      {
+        "resources": ["popup/*", "contentPage/*", "assets/*", "src/*", "./*", "/*"],
+        "matches": ["<all_urls>"],
+        "use_dynamic_url": true
+      }
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ]
+    
+}
